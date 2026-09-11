@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三亚阿文 · 本地船长带你出海海钓</title>
+<meta name="description" content="三亚本地船长阿文，带你出海海钓。新手友好、包教包会、全套装备、无隐形消费、渔获全带走。拼船包船亲子都能玩。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0A3D62;
+  --sea:#1B6CA8;
+  --sea-light:#4A93C9;
+  --sand:#F0B429;
+  --sand-soft:#F8D67C;
+  --cream:#FAF7F0;
+  --cream-dark:#F2ECDF;
+  --ink:#0F2B44;
+  --ink-soft:#3D5A75;
+  --white:#FFFFFF;
+  --ease:cubic-bezier(0.19,1,0.22,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans SC',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+.hand{font-family:'Zhi Mang Xing','Noto Sans SC',cursive;font-weight:400;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+/* ============ 导航 ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease);
+}
+.nav.scrolled{background:rgba(250,247,240,.96);padding:10px 0;box-shadow:0 1px 0 rgba(10,61,98,.08);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:baseline;gap:8px;}
+.nav-logo .hand{font-size:30px;color:var(--white);transition:color .4s;}
+.nav-logo .sub{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.75);transition:color .4s;}
+.nav.scrolled .nav-logo .hand{color:var(--deep);}
+.nav.scrolled .nav-logo .sub{color:var(--sea);}
+.nav-links{display:flex;gap:34px;font-size:15px;font-weight:500;color:rgba(255,255,255,.92);transition:color .4s;}
+.nav-links a{position:relative;padding:4px 0;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--sand);transition:width .35s var(--ease);}
+.nav-links a:hover::after{width:100%;}
+.nav.scrolled .nav-links{color:var(--ink);}
+.nav-cta{
+  background:var(--sand);color:var(--deep);font-weight:700;font-size:14px;
+  padding:10px 22px;border-radius:999px;transition:transform .3s var(--ease),background .3s;
+}
+.nav-cta:hover{transform:scale(1.05);background:var(--sand-soft);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+.nav-toggle span{display:block;width:26px;height:2px;background:var(--white);margin:6px 0;transition:.3s;}
+.nav.scrolled .nav-toggle span{background:var(--deep);}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,61,98,.82) 0%,rgba(10,61,98,.28) 45%,rgba(10,61,98,.05) 75%);
+}
+.hero-content{position:relative;z-index:2;width:100%;padding-bottom:72px;color:var(--white);}
+.hero-tag{
+  display:inline-block;background:var(--sand);color:var(--deep);
+  font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px;margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(40px,7.2vw,84px);font-weight:900;line-height:1.16;letter-spacing:1px;
+  text-shadow:0 2px 24px rgba(10,61,98,.35);
+}
+.hero h1 .hand{font-size:1.15em;color:var(--sand);display:inline-block;transform:rotate(-2deg);}
+.hero-sub{margin-top:18px;font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,.92);max-width:560px;}
+.hero-actions{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px;
+  padding:15px 34px;border-radius:999px;cursor:pointer;border:none;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s;
+}
+.btn:hover{transform:translateY(-3px);}
+.btn-primary{background:var(--sand);color:var(--deep);}
+.btn-primary:hover{box-shadow:0 10px 28px rgba(240,180,41,.4);}
+.btn-ghost{background:rgba(255,255,255,.12);color:var(--white);border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(4px);}
+.btn-ghost:hover{background:rgba(255,255,255,.22);}
+.hero-shot{
+  position:absolute;right:26px;bottom:26px;z-index:2;
+  color:rgba(255,255,255,.85);font-size:13px;letter-spacing:1px;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-shot i{width:8px;height:8px;border-radius:50%;background:var(--sand);display:inline-block;}
+
+/* ============ 跑马灯 ============ */
+.marquee{background:var(--sand);color:var(--deep);overflow:hidden;padding:16px 0;white-space:nowrap;}
+.marquee-track{display:inline-flex;animation:marquee 26s linear infinite;}
+.marquee-track span{font-weight:700;font-size:17px;margin:0 22px;display:inline-flex;align-items:center;gap:22px;}
+.marquee-track .wave{color:var(--sea);font-weight:400;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ============ 通用区块 ============ */
+.section{padding:110px 0;}
+.section-label{
+  display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;
+  letter-spacing:4px;color:var(--sea);margin-bottom:18px;text-transform:uppercase;
+}
+.section-label::before{content:'';width:34px;height:2px;background:var(--sand);}
+.section-title{font-size:clamp(30px,4.4vw,52px);font-weight:900;line-height:1.25;letter-spacing:.5px;}
+.section-title .hand{color:var(--sea);font-size:1.12em;}
+.section-desc{margin-top:16px;font-size:17px;color:var(--ink-soft);max-width:640px;}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+
+/* 图片实拍标签 */
+.shot-tag{
+  position:absolute;top:14px;left:-8px;z-index:3;
+  background:var(--sand);color:var(--deep);font-size:12px;font-weight:700;
+  padding:5px 14px;transform:rotate(-3deg);
+  box-shadow:0 3px 10px rgba(10,61,98,.18);
+}
+
+/* ============ 三大入口 ============ */
+.entries{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:22px;margin-top:56px;}
+.entry{
+  position:relative;border-radius:20px;overflow:hidden;cursor:pointer;min-height:280px;
+  display:flex;align-items:flex-end;
+}
+.entry:first-child{grid-row:span 2;min-height:600px;}
+.entry img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
+.entry:hover img{transform:scale(1.05);}
+.entry::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,61,98,.78),rgba(10,61,98,.05) 55%);}
+.entry-body{position:relative;z-index:2;padding:28px 30px;color:var(--white);width:100%;}
+.entry-body h3{font-size:26px;font-weight:900;}
+.entry-body p{font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;}
+.entry-body .go{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:700;color:var(--sand);
+}
+.entry-body .go svg{transition:transform .3s var(--ease);}
+.entry:hover .go svg{transform:translateX(5px);}
+
+/* ============ 服务 / 行程 ============ */
+#service{background:var(--white);}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px;}
+.plan{
+  border:1.5px solid var(--cream-dark);border-radius:22px;padding:38px 36px;
+  background:var(--cream);position:relative;transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.plan:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(10,61,98,.10);}
+.plan-badge{
+  position:absolute;top:-14px;left:32px;background:var(--sea);color:var(--white);
+  font-size:13px;font-weight:700;padding:6px 16px;border-radius:999px;
+}
+.plan h3{font-size:24px;font-weight:900;}
+.plan-time{font-size:14px;color:var(--sea);font-weight:700;margin-top:8px;letter-spacing:.5px;}
+.boat-price{margin:18px 0 6px;border:1.5px solid var(--cream-dark);border-radius:14px;overflow:hidden;background:var(--white);}
+.bp-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 18px;}
+.bp-row+.bp-row{border-top:1px dashed var(--cream-dark);}
+.bp-name{font-weight:700;font-size:14.5px;}
+.bp-nums{color:var(--ink-soft);font-size:13.5px;text-align:right;}
+.bp-nums b{color:var(--sea);font-size:21px;font-weight:900;margin:0 1px;}
+.crew-note{
+  margin-top:26px;background:rgba(27,108,168,.07);border:1.5px dashed var(--sea-light);
+  border-radius:14px;padding:18px 22px;font-size:14.5px;color:var(--ink-soft);
+}
+.crew-note b{color:var(--sea);}
+.plan ul{list-style:none;margin-top:18px;}
+.plan ul li{padding:9px 0 9px 30px;position:relative;font-size:15px;color:var(--ink-soft);border-bottom:1px dashed var(--cream-dark);}
+.plan ul li:last-child{border-bottom:none;}
+.plan ul li::before{
+  content:'';position:absolute;left:2px;top:16px;width:14px;height:14px;border-radius:50%;
+  background:var(--sand);clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%);
+}
+.timeline{margin-top:70px;}
+.timeline-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;position:relative;}
+.timeline-track::before{content:'';position:absolute;top:22px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(90deg,var(--sea-light) 0 10px,transparent 10px 20px);}
+.tl-item{text-align:center;padding:0 14px;position:relative;}
+.tl-dot{
+  width:44px;height:44px;border-radius:50%;background:var(--sea);color:var(--white);
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;margin:0 auto 16px;
+  border:4px solid var(--white);box-shadow:0 4px 14px rgba(27,108,168,.3);position:relative;z-index:2;
+}
+.tl-item h4{font-size:17px;font-weight:700;}
+.tl-item p{font-size:13.5px;color:var(--ink-soft);margin-top:6px;}
+.tl-time{font-size:12px;color:var(--sand);font-weight:700;letter-spacing:1px;}
+
+/* ============ 包含清单 ============ */
+.include{margin-top:90px;background:var(--deep);border-radius:26px;padding:56px;color:var(--white);position:relative;overflow:hidden;}
+.include::before{
+  content:'〰';position:absolute;right:-30px;top:-70px;font-size:300px;color:rgba(255,255,255,.05);font-family:serif;
+}
+.include h3{font-size:28px;font-weight:900;}
+.include h3 .hand{color:var(--sand);}
+.include-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 40px;margin-top:34px;}
+.include-cols li{
+  list-style:none;font-size:14.5px;color:rgba(255,255,255,.88);padding:10px 0 10px 26px;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.include-cols li::before{content:'';position:absolute;left:0;top:17px;width:12px;height:12px;background:var(--sand);border-radius:3px;transform:rotate(45deg);}
+.include-note{
+  margin-top:30px;background:rgba(240,180,41,.14);border:1px dashed var(--sand);border-radius:14px;
+  padding:18px 22px;font-size:14.5px;color:var(--sand-soft);
+}
+.include-note b{color:var(--sand);}
+
+/* ============ 船型实拍横滑 ============ */
+.boats{margin-top:90px;}
+.boats-strip{
+  display:flex;gap:18px;overflow-x:auto;padding:24px 24px 34px;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.boats-strip::-webkit-scrollbar{height:6px;}
+.boats-strip::-webkit-scrollbar-thumb{background:var(--sea-light);border-radius:3px;}
+.boat-card{
+  position:relative;flex:0 0 auto;width:min(420px,78vw);border-radius:18px;overflow:hidden;scroll-snap-align:start;
+}
+.boat-card img{width:100%;height:300px;object-fit:cover;transition:transform .7s var(--ease);}
+.boat-card:hover img{transform:scale(1.04);}
+.boat-card figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:16px 20px;color:var(--white);font-size:14px;font-weight:700;
+  background:linear-gradient(to top,rgba(10,61,98,.75),transparent);
+}
+
+/* ============ 关于阿文 ============ */
+#about{background:var(--deep);color:var(--white);position:relative;overflow:hidden;}
+#about .section-label{color:var(--sand);}
+#about .section-title .hand{color:var(--sand);}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+.about-photos{position:relative;}
+.about-photos .main{border-radius:22px;overflow:hidden;transform:rotate(1.5deg);}
+.about-photos .main img{width:100%;height:520px;object-fit:cover;}
+.about-photos .float{
+  position:absolute;width:46%;bottom:-46px;left:-36px;border-radius:16px;overflow:hidden;
+  border:6px solid var(--cream);transform:rotate(-4deg);box-shadow:0 18px 40px rgba(0,0,0,.3);
+}
+.about-photos .float img{width:100%;height:200px;object-fit:cover;}
+.about-text p{color:rgba(255,255,255,.85);margin-top:18px;font-size:16px;}
+.about-text .todo-inline{
+  color:var(--sand);border-bottom:1px dashed var(--sand);font-weight:700;
+}
+.why{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;}
+.why-item{display:flex;gap:12px;align-items:flex-start;}
+.why-item .n{
+  flex:0 0 30px;height:30px;border-radius:50%;background:var(--sand);color:var(--deep);
+  font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px;
+}
+.why-item div b{display:block;font-size:15.5px;}
+.why-item div span{font-size:13.5px;color:rgba(255,255,255,.68);}
+
+/* ============ 真实评价 ============ */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;}
+.review{
+  background:var(--white);border-radius:20px;padding:30px 28px;position:relative;
+  border:1.5px solid var(--cream-dark);display:flex;flex-direction:column;
+}
+.review::before{
+  content:'"';position:absolute;top:6px;right:22px;font-size:90px;line-height:1;
+  color:var(--sand);opacity:.35;font-family:Georgia,serif;
+}
+.review .stars{color:var(--sand);letter-spacing:3px;font-size:15px;}
+.review p{margin-top:12px;font-size:15px;color:var(--ink-soft);flex:1;}
+.review .who{margin-top:18px;display:flex;align-items:center;gap:12px;}
+.review .who .avatar{
+  width:42px;height:42px;border-radius:50%;background:var(--sea);color:var(--white);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;
+}
+.review .who b{font-size:14.5px;display:block;}
+.review .who span{font-size:12.5px;color:var(--ink-soft);}
+.review-tip{
+  margin-top:26px;font-size:13px;color:var(--ink-soft);
+  border:1px dashed var(--sea-light);border-radius:10px;padding:12px 18px;display:inline-block;
+}
+.wall{columns:3;column-gap:18px;margin-top:60px;}
+.wall figure{break-inside:avoid;margin-bottom:18px;border-radius:16px;overflow:hidden;position:relative;}
+.wall img{width:100%;transition:transform .7s var(--ease);}
+.wall figure:hover img{transform:scale(1.04);}
+.wall figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:32px 16px 12px;font-size:12.5px;color:rgba(255,255,255,.95);
+  background:linear-gradient(to top,rgba(10,61,98,.7),transparent);opacity:0;transition:opacity .4s;
+}
+.wall figure:hover figcaption{opacity:1;}
+
+/* ============ 联系预约 ============ */
+#contact{position:relative;background:var(--deep);color:var(--white);overflow:hidden;}
+#contact::before{
+  content:'';position:absolute;inset:0;
+  background:url('images/sea-horizon.jpg') center/cover;opacity:.14;
+}
+#contact .container{position:relative;z-index:2;}
+#contact .section-label{color:var(--sand);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;margin-top:20px;align-items:start;}
+.contact-item{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14);}
+.contact-item:last-of-type{border-bottom:none;}
+.contact-item .ic{
+  flex:0 0 46px;height:46px;border-radius:14px;background:rgba(240,180,41,.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.contact-item b{font-size:16.5px;display:block;}
+.contact-item p{font-size:14px;color:rgba(255,255,255,.7);margin-top:3px;}
+.contact-item .big{font-size:22px;font-weight:900;color:var(--sand);letter-spacing:1px;}
+.qr-box{
+  margin-top:26px;background:rgba(255,255,255,.06);border:2px dashed rgba(240,180,41,.55);
+  border-radius:18px;padding:26px;text-align:center;max-width:300px;
+}
+.qr-box .qr-ph{
+  width:180px;height:180px;margin:0 auto 14px;border-radius:12px;background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
+  color:var(--sand);font-size:14px;font-weight:700;
+}
+.qr-box p{font-size:13px;color:rgba(255,255,255,.7);}
+.form-card{background:var(--white);border-radius:24px;padding:40px 38px;color:var(--ink);box-shadow:0 30px 70px rgba(0,20,40,.35);}
+.form-card h3{font-size:24px;font-weight:900;}
+.form-card .hand{color:var(--sea);}
+.form-card>p{font-size:14px;color:var(--ink-soft);margin-top:6px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--sea);margin-bottom:7px;letter-spacing:1px;}
+.field input,.field select,.field textarea{
+  width:100%;border:1.5px solid var(--cream-dark);border-radius:12px;padding:13px 16px;font-size:15px;
+  font-family:inherit;background:var(--cream);color:var(--ink);transition:border .3s;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--sea);}
+.field{margin-top:18px;}
+.form-card textarea{resize:vertical;min-height:90px;}
+.form-submit{width:100%;margin-top:26px;justify-content:center;font-size:17px;}
+.form-done{
+  display:none;margin-top:18px;background:rgba(27,108,168,.08);border:1.5px solid var(--sea-light);
+  border-radius:14px;padding:18px 20px;font-size:14px;color:var(--ink);
+}
+.form-done b{color:var(--sea);}
+.form-done .copy-text{
+  margin-top:10px;background:var(--cream);border-radius:10px;padding:12px 14px;font-size:13px;
+  color:var(--ink-soft);white-space:pre-wrap;word-break:break-all;
+}
+.form-hint{margin-top:14px;font-size:12.5px;color:var(--ink-soft);text-align:center;}
+
+/* ============ 页脚 ============ */
+footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-size:13.5px;}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.foot-inner .hand{font-size:26px;color:var(--sand);}
+.foot-links{display:flex;gap:24px;}
+.foot-links a:hover{color:var(--sand);}
+
+/* ============ 响应式 ============ */
+@media(max-width:960px){
+  .section{padding:76px 0;}
+  .entries{grid-template-columns:1fr;grid-template-rows:none;}
+  .entry:first-child{grid-row:auto;min-height:340px;}
+  .entry{min-height:280px;}
+  .plan-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .timeline-track{grid-template-columns:1fr 1fr;gap:36px 0;}
+  .timeline-track::before{display:none;}
+  .include-cols{grid-template-columns:1fr 1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .wall{columns:2;}
+  .about-photos .main img{height:380px;}
+  .about-photos .float{left:-8px;bottom:-30px;}
+  .about-text{margin-top:60px;}
+  .form-row{grid-template-columns:1fr;}
+  .nav-links{
+    position:fixed;top:0;right:0;bottom:0;width:min(300px,80vw);background:var(--cream);
+    flex-direction:column;padding:100px 34px;gap:26px;color:var(--ink);
+    transform:translateX(100%);transition:transform .45s var(--ease);box-shadow:-10px 0 40px rgba(0,0,0,.12);
+  }
+  .nav-links.open{transform:none;}
+  .nav-toggle{display:block;position:relative;z-index:101;}
+  .nav-cta{display:none;}
+  .hero-content{padding-bottom:110px;}
+  .include{padding:40px 26px;}
+}
+@media(max-width:560px){
+  .wall{columns:1;}
+  .include-cols{grid-template-columns:1fr;}
+  .why{grid-template-columns:1fr;}
+  .timeline-track{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= 导航 ================= -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo">
+      <span class="hand">三亚阿文</span>
+      <span class="sub">SANYA SEA FISHING</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#entries">怎么玩</a>
+      <a href="#service">行程价格</a>
+      <a href="#about">关于阿文</a>
+      <a href="#reviews">客人评价</a>
+      <a href="#contact">预约</a>
+    </div>
+    <a href="#contact" class="nav-cta">加微信约船</a>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= Hero ================= -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="images/girl-bow.jpg" alt="三亚出海实拍 · 船头看海"></div>
+  <div class="container hero-content">
+    <span class="hero-tag">三亚本地船长 · 阿文</span>
+    <h1>来三亚，<br>跟<span class="hand">阿文</span>出海钓鱼去</h1>
+    <p class="hero-sub">不会钓没关系，手把手教你。装备饵料全包，钓到的鱼全部带走，全程没有任何隐形消费。</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">加微信，问一句不花钱</a>
+      <a href="#entries" class="btn btn-ghost">先看看怎么玩 ↓</a>
+    </div>
+  </div>
+  <div class="hero-shot"><i></i>iPhone 实拍 · 无滤镜</div>
+</header>
+
+<!-- ================= 跑马灯 ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>新手友好<span class="wave">〰</span></span>
+    <span>包教包会<span class="wave">〰</span></span>
+    <span>无隐形消费<span class="wave">〰</span></span>
+    <span>渔获全部带走<span class="wave">〰</span></span>
+    <span>船长会找钓点<span class="wave">〰</span></span>
+    <span>免费帮拍照<span class="wave">〰</span></span>
+    <span>全套装备饵料<span class="wave">〰</span></span>
+    <span>船稳安全有保障<span class="wave">〰</span></span>
+  </div>
+</div>
+
+<!-- ================= 三大入口 ================= -->
+<section class="section" id="entries">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">怎么玩 · HOW IT WORKS</div>
+      <h2 class="section-title">三种玩法，<span class="hand">总有一种适合你</span></h2>
+      <p class="section-desc">不管是一个人想体验、一帮朋友想包船，还是带娃出来放电，都能安排。点进去看详细行程和价格。</p>
+    </div>
+    <div class="entries">
+      <a href="#service" class="entry reveal">
+        <img src="images/rod-fish.jpg" alt="拼船海钓 · 上鱼瞬间实拍">
+        <span class="shot-tag">iPhone 实拍</span>
+        <div class="entry-body">
+          <h3>拼船海钓</h3>
+          <p>一个人也能来，按人头算，认识新朋友，性价比最高</p>
+          <span class="go">看行程价格
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="#service" class="entry reveal">
+        <img src="images/boat-pink.jpg" alt="包船出海 · 双体大船实拍">
+        <span class="shot-tag">iPhone 实拍</span>
+        <div class="entry-body">
+          <h3>包船出海</h3>
+          <p>朋友聚会、公司团建，整条船都是你们的</p>
+          <span class="go">看行程价格
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="#service" class="entry reveal">
+        <img src="images/kid-fish.jpg" alt="亲子海钓 · 小朋友自己钓上来的鱼">
+        <span class="shot-tag">iPhone 实拍</span>
+        <div class="entry-body">
+          <h3>亲子体验</h3>
+          <p>给孩子讲海洋知识，手把手带娃钓上人生第一条鱼</p>
+          <span class="go">看行程价格
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 服务 / 行程价格 ================= -->
+<section class="section" id="service">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">行程与价格 · TRIPS & PRICE</div>
+      <h2 class="section-title">价格明明白白，<span class="hand">上船前全说清楚</span></h2>
+      <p class="section-desc">多少钱、含什么、玩多久，这里全写清楚。报价一口价，中途不加收任何费用，钓到的鱼全部归你。</p>
+    </div>
+
+    <div class="plan-grid">
+      <div class="plan reveal">
+        <span class="plan-badge">新手首选</span>
+        <h3>四小时体验场</h3>
+        <p class="plan-time">上午 9:00 – 13:00 ｜ 下午 14:00 – 18:00</p>
+        <div class="boat-price">
+          <div class="bp-row">
+            <span class="bp-name">双体海钓大船</span>
+            <span class="bp-nums">拼船 <b>¥188</b>/人 · 包船 <b>¥1780</b></span>
+          </div>
+          <div class="bp-row">
+            <span class="bp-name">豪华钓艇</span>
+            <span class="bp-nums">拼船 <b>¥268</b>/人 · 包船 <b>¥2580</b></span>
+          </div>
+        </div>
+        <ul>
+          <li>一价全包，没有任何二次消费</li>
+          <li>近海钓点，鱼口稳，新手也能上鱼</li>
+          <li>全套渔具 + 鱼饵不限量，什么都不用带</li>
+          <li>船长 + 导钓双人服务，手把手教学</li>
+          <li>免费帮拍照录像，渔获打包带走</li>
+        </ul>
+      </div>
+      <div class="plan reveal">
+        <span class="plan-badge">钓得过瘾</span>
+        <h3>六小时畅钓场</h3>
+        <p class="plan-time">上午 8:00 – 14:00 ｜ 下午 14:00 – 20:00</p>
+        <div class="boat-price">
+          <div class="bp-row">
+            <span class="bp-name">双体海钓大船</span>
+            <span class="bp-nums">拼船 <b>¥298</b>/人 · 包船 <b>¥2800</b></span>
+          </div>
+          <div class="bp-row">
+            <span class="bp-name">豪华钓艇</span>
+            <span class="bp-nums">拼船 <b>¥378</b>/人 · 包船 <b>¥3588</b></span>
+          </div>
+        </div>
+        <ul>
+          <li>一价全包，没有任何二次消费</li>
+          <li>时间更充裕，多钓点轮着打，没鱼口主动换点</li>
+          <li>目标大鱼，石斑、红友都有机会</li>
+          <li>免费帮拍照录像，渔获打包带走</li>
+          <li>适合想好好过把瘾的朋友、钓鱼发烧友</li>
+        </ul>
+      </div>
+    </div>
+    <div class="crew-note reveal">
+      <b>每船配置：</b>资深船长 1 名 + 专业导钓 1 名，全程跟着服务。每船荷载 <b>10 名</b>钓友（超过 1 周岁的宝宝也算占位哦）。新手小白、男女老少都适合。包船时间可相对灵活 1 小时，但不跨两个班次。
+    </div>
+
+    <!-- 当天行程 -->
+    <div class="timeline reveal">
+      <div class="section-label" style="margin-top:70px;">当天怎么过 · A DAY WITH US</div>
+      <h3 class="section-title" style="font-size:clamp(24px,3vw,36px);">从码头到上鱼，就这么简单</h3>
+      <div class="timeline-track">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <span class="tl-time">9:00 / 14:00 出发</span>
+          <h4>码头碰头</h4>
+          <p>星华旅游游艇码头集合。上船先穿救生衣，讲安全须知</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <span class="tl-time">船程片刻</span>
+          <h4>出海到钓点</h4>
+          <p>一路吹海风看海景，晕船的提前贴好晕船贴（免费）</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <span class="tl-time">钓 4 / 6 小时</span>
+          <h4>开钓 + 教学</h4>
+          <p>剪饵、绑线、放线、刺鱼全程教。没口就换钓点，不耗着</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <span class="tl-time">【返程前】</span>
+          <h4>拍照打包</h4>
+          <p>跟你的鱼合个影，鱼获装好带走，朋友圈素材齐活</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 费用包含 -->
+    <div class="include reveal">
+      <h3>这一口价，<span class="hand">到底包了些什么</span></h3>
+      <ul class="include-cols">
+        <li>出海保险，人手一份</li>
+        <li>LOWRANCE 劳伦斯声纳探鱼器（专业级）</li>
+        <li>品牌纺车轮 + 品牌钓竿（专业渔具）</li>
+        <li>资深船长一名 + 专业导钓管家一名</li>
+        <li>一次性毛巾 / 雨衣 / 擦镜湿巾</li>
+        <li>IPX8 手机防水袋</li>
+        <li>品牌晕船贴 + 德国进口驱蚊喷雾</li>
+        <li>消毒洗手液</li>
+        <li>蓝牙音箱 + 小米充电宝 + 三线快充</li>
+        <li>加厚抓鱼毛巾 + 装鱼拍照工具</li>
+        <li>鱼获打包袋 + 淡水冲洗</li>
+        <li>鱼饵不限量 + 个人鱼获收纳</li>
+        <li>免费手机拍照 + 视频跟拍</li>
+        <li>救生衣 + 应急救生毛毯</li>
+        <li>医疗急救箱（35 种高配用品）</li>
+      </ul>
+      <div class="include-note">
+        <b>钓具使用须知：</b>钓具正常使用造成损坏，<b>免赔</b>！渔配件丢失缺损，<b>免费立刻补充</b>！新手放心甩竿，不用有心理负担。
+      </div>
+    </div>
+
+    <!-- 船型实拍 -->
+    <div class="boats reveal">
+      <div class="section-label">我们的船 · OUR BOATS</div>
+      <h3 class="section-title" style="font-size:clamp(24px,3vw,36px);">船就停在码头</h3>
+    </div>
+  </div>
+  <div class="boats-strip">
+    <figure class="boat-card"><img src="images/boat-luxury.jpg" alt="豪华钓艇 · 休息室/空调/独卫/厨房"></figure>
+    <figure class="boat-card"><img src="images/boat-pink.jpg" alt="双体大船 · 观光+海钓/超大空间"></figure>
+    <figure class="boat-card"><img src="images/boat-xiaoyuer.jpg" alt="小鱼儿2号"><figcaption>小鱼儿 2 号 · 日常出海主力</figcaption></figure>
+    <figure class="boat-card"><img src="images/boat-flag.jpg" alt="码头实拍"><figcaption>码头实拍 · 出发前整备</figcaption></figure>
+    <figure class="boat-card"><img src="images/deck.jpg" alt="甲板空间"><figcaption>甲板空间 · 活动区域宽敞不打挤</figcaption></figure>
+  </div>
+</section>
+
+<!-- ================= 关于阿文 ================= -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photos reveal">
+        <div class="main"><img src="images/wake-rod.jpg" alt="出海路上 · 船尾浪花实拍"></div>
+        <div class="float"><img src="images/catch-deck.jpg" alt="当天渔获实拍"></div>
+        <span class="shot-tag">iPhone 实拍</span>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">关于阿文 · ABOUT</div>
+        <h2 class="section-title">我是阿文，<br><span class="hand">在三亚靠海吃饭</span></h2>
+        <p>我这个人比较实在：海里哪儿有鱼、今天鱼口怎么样，我直接跟你说。钓不到我不会让你在原地干耗，换点接着打。客人玩得开不开心，看我船上那些照片就知道了。</p>
+        <div class="why">
+          <div class="why-item"><span class="n">1</span><div><b>船长会找钓点</b><span>声纳探鱼 + 多年经验，没鱼口主动换点，不空军</span></div></div>
+          <div class="why-item"><span class="n">2</span><div><b>新手手把手教</b><span>剪饵、绑线、放线、刺鱼，全程手把手带着你操作</span></div></div>
+          <div class="why-item"><span class="n">3</span><div><b>消费全透明</b><span>一口价写清楚，无隐形消费，渔获全部带走</span></div></div>
+          <div class="why-item"><span class="n">4</span><div><b>免费帮拍照</b><span>海上光线好容易出片，工作人员主动帮你拍</span></div></div>
+          <div class="why-item"><span class="n">5</span><div><b>安全放第一</b><span>船开得稳，保险救生衣急救箱配齐，照顾到每位客人</span></div></div>
+          <div class="why-item"><span class="n">6</span><div><b>氛围轻松解压</b><span>船长话多不冷场，带娃还会顺手科普海洋知识</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 真实评价 ================= -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">客人怎么说 · REVIEWS</div>
+      <h2 class="section-title">好不好玩，<span class="hand">听玩过的说</span></h2>
+    </div>
+    <!-- 【提示：以下评价为示例文案，上线前请替换为真实客人反馈与姓名】 -->
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <span class="stars">★★★★★</span>
+        <p>完全没钓过鱼，船长从剪饵绑线开始手把手教，真的钓上来好几条。全程没人推销任何东西，说多少钱就是多少钱。</p>
+        <div class="who"><span class="avatar">林</span><div><b>林女士</b><span>杭州 · 亲子出行</span></div></div>
+      </div>
+      <div class="review reveal">
+        <span class="stars">★★★★★</span>
+        <p>带孩子来的，本来怕他坐不住，结果船长一路给他讲各种鱼和海洋知识，娃比我们还兴奋，回家写了一篇作文。</p>
+        <div class="who"><span class="avatar">陈</span><div><b>陈先生</b><span>成都 · 一家三口</span></div></div>
+      </div>
+      <div class="review reveal">
+        <span class="stars">★★★★★</span>
+        <p>中途有段时间没口，船长二话不说直接换钓点，换完就连杆。船上氛围特别好，船长很幽默，还主动帮我们拍照，张张能发圈。</p>
+        <div class="who"><span class="avatar">Seven</span><div><b>Seven</b><span>上海 · 朋友结伴</span></div></div>
+      </div>
+    </div>
+
+    <div class="wall reveal">
+      <figure><img src="images/kid-fish.jpg" alt="小客人双钩中鱼"><figcaption>小家伙一手一条，都是自己钓的</figcaption></figure>
+      <figure><img src="images/red-fish.jpg" alt="客人钓获大红石斑"><figcaption>这条红石斑，拉上来全船都沸腾了</figcaption></figure>
+      <figure><img src="images/family.jpg" alt="一家人出海合影"><figcaption>一家三口的海上下午</figcaption></figure>
+      <figure><img src="images/woman-fishing.jpg" alt="女生体验海钓"><figcaption>第一次拿竿，姿势已经很像样了</figcaption></figure>
+      <figure><img src="images/two-men-fish.jpg" alt="客人渔获合影"><figcaption>哥俩的战果，晚上加菜</figcaption></figure>
+      <figure><img src="images/girl-deck.jpg" alt="甲板上的小客人"><figcaption>船上的小团宠</figcaption></figure>
+      <figure><img src="images/catch-deck.jpg" alt="当天渔获"><figcaption>一上午的收获，全部带走</figcaption></figure>
+      <figure><img src="images/sea-horizon.jpg" alt="海上风景"><figcaption>就算不钓鱼，这景色也值了</figcaption></figure>
+      <figure><img src="images/boat-flag.jpg" alt="码头待命的船"><figcaption>船收拾干净，等下一拨客人</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 联系预约 ================= -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">预约出海 · BOOKING</div>
+      <h2 class="section-title" style="color:#fff;">想好哪天出海了吗？<br><span class="hand" style="color:var(--sand);">加个微信，聊聊再说</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-item">
+          <span class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" fill="#F0B429"/></svg>
+          </span>
+          <div>
+            <b>电话 / 微信</b>
+            <p class="big"><a href="tel:19047065750">190 4706 5750</a></p>
+            <p>微信同号，一般秒回；在海上没信号，靠岸第一时间回你</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11Z" stroke="#F0B429" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="#F0B429"/></svg>
+          </span>
+          <div>
+            <b>集合码头</b>
+            <p class="big" style="font-size:17px;">三亚星华旅游游艇码头</p>
+            <p>导航直接搜码头名，到了打我电话，我去接你上船</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#F0B429" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#F0B429" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <b>出海班次</b>
+            <p class="big" style="font-size:15.5px;">4 小时场：9:00 / 14:00 出发<br>6 小时场：8:00 / 14:00 出发</p>
+            <p>每船只坐 10 人，旺季位置紧，建议提前约</p>
+          </div>
+        </div>
+        <div class="qr-box">
+          <div class="qr-ph" id="qrPh">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3zM18 18h3v3h-3z" stroke="#F0B429" stroke-width="1.6"/></svg>
+            微信二维码占位
+          </div>
+          <img id="qrImg" src="images/wechat-qr.jpg" alt="阿文微信二维码" style="display:none;width:180px;height:180px;object-fit:cover;border-radius:12px;margin:0 auto 14px;" onload="this.style.display='block';document.getElementById('qrPh').style.display='none';">
+          <p>微信扫码加阿文<br><b>约船、问价、看天气都行</b></p>
+        </div>
+      </div>
+
+      <form class="form-card reveal" id="bookForm">
+        <h3>先留个需求，<span class="hand">我来安排</span></h3>
+        <p>填完点提交，会自动生成一段文字并复制好，你粘贴到微信发给我就行。</p>
+        <div class="form-row">
+          <div class="field">
+            <label>怎么称呼你</label>
+            <input type="text" id="fName" placeholder="比如：王女士 / 阿杰" required>
+          </div>
+          <div class="field">
+            <label>你的微信或手机号</label>
+            <input type="text" id="fContact" placeholder="方便我回你" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>想哪天出海</label>
+            <input type="date" id="fDate" required>
+          </div>
+          <div class="field">
+            <label>一共几个人</label>
+            <select id="fPeople">
+              <option>1-2 人</option><option>3-4 人</option><option>5-8 人</option><option>8 人以上（包船）</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>想玩哪种</label>
+          <select id="fType">
+            <option>四小时体验场（拼船）</option>
+            <option>四小时体验场（包船）</option>
+            <option>六小时畅钓场（拼船）</option>
+            <option>六小时畅钓场（包船）</option>
+            <option>还没想好，给点建议</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>还有啥想问的（可不填）</label>
+          <textarea id="fMsg" placeholder="比如：带老人可以吗 / 会不会晕船 / 能帮忙加工鱼吗"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">生成预约信息并复制</button>
+        <div class="form-done" id="formDone">
+          <b>已生成并复制到剪贴板！</b>打开微信发给阿文，或直接打电话都行。
+          <div class="copy-text" id="copyText"></div>
+        </div>
+        <p class="form-hint">你填的内容只在你自己浏览器里，不会上传到任何服务器。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 页脚 ================= -->
+<footer>
+  <div class="container foot-inner">
+    <span class="hand">三亚阿文</span>
+    <div class="foot-links">
+      <a href="#entries">怎么玩</a>
+      <a href="#service">行程价格</a>
+      <a href="#about">关于阿文</a>
+      <a href="#reviews">客人评价</a>
+      <a href="#contact">预约</a>
+    </div>
+    <span>© 2026 三亚阿文海钓 · 照片均为船上 iPhone 实拍</span>
+  </div>
+</footer>
+
+<script>
+// 导航滚动状态
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+// 移动端菜单
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+// 跑马灯内容翻倍，无缝循环
+const track = document.getElementById('marqueeTrack');
+track.innerHTML += track.innerHTML;
+
+// 滚动入场动画
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// 预约表单：本地生成文本并复制（不联网）
+document.getElementById('bookForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const text =
+`【海钓预约咨询】
+称呼：${v('fName')}
+联系方式：${v('fContact')}
+出海日期：${v('fDate')}
+人数：${v('fPeople')}
+玩法：${v('fType')}
+备注：${v('fMsg') || '无'}`;
+  document.getElementById('copyText').textContent = text;
+  try { await navigator.clipboard.writeText(text); } catch(_) {}
+  const done = document.getElementById('formDone');
+  done.style.display = 'block';
+  done.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+</script>
+</body>
+</html>
