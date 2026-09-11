@@ -160,13 +160,18 @@ a{color:inherit;text-decoration:none;}
   font-size:13px;font-weight:700;padding:6px 16px;border-radius:999px;
 }
 .plan h3{font-size:24px;font-weight:900;}
-.plan-price{margin:14px 0 4px;display:flex;align-items:baseline;gap:8px;}
-.plan-price .num{font-size:40px;font-weight:900;color:var(--sea);}
-.plan-price .unit{color:var(--ink-soft);font-size:14px;}
-.plan-price .todo{
-  font-size:13px;color:var(--sand);background:rgba(240,180,41,.14);
-  border:1px dashed var(--sand);padding:3px 10px;border-radius:6px;font-weight:700;
+.plan-time{font-size:14px;color:var(--sea);font-weight:700;margin-top:8px;letter-spacing:.5px;}
+.boat-price{margin:18px 0 6px;border:1.5px solid var(--cream-dark);border-radius:14px;overflow:hidden;background:var(--white);}
+.bp-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 18px;}
+.bp-row+.bp-row{border-top:1px dashed var(--cream-dark);}
+.bp-name{font-weight:700;font-size:14.5px;}
+.bp-nums{color:var(--ink-soft);font-size:13.5px;text-align:right;}
+.bp-nums b{color:var(--sea);font-size:21px;font-weight:900;margin:0 1px;}
+.crew-note{
+  margin-top:26px;background:rgba(27,108,168,.07);border:1.5px dashed var(--sea-light);
+  border-radius:14px;padding:18px 22px;font-size:14.5px;color:var(--ink-soft);
 }
+.crew-note b{color:var(--sea);}
 .plan ul{list-style:none;margin-top:18px;}
 .plan ul li{padding:9px 0 9px 30px;position:relative;font-size:15px;color:var(--ink-soft);border-bottom:1px dashed var(--cream-dark);}
 .plan ul li:last-child{border-bottom:none;}
@@ -487,14 +492,21 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
 
     <div class="plan-grid">
       <div class="plan reveal">
-        <span class="plan-badge">最多人选</span>
-        <h3>半天体验场</h3>
-        <div class="plan-price">
-          <span class="num">¥___</span><span class="unit">/ 人 · 拼船</span>
-          <span class="todo">【填入真实价格】</span>
+        <span class="plan-badge">新手首选</span>
+        <h3>四小时体验场</h3>
+        <p class="plan-time">上午 9:00 – 13:00 ｜ 下午 14:00 – 18:00</p>
+        <div class="boat-price">
+          <div class="bp-row">
+            <span class="bp-name">双体海钓大船</span>
+            <span class="bp-nums">拼船 <b>¥188</b>/人 · 包船 <b>¥1780</b></span>
+          </div>
+          <div class="bp-row">
+            <span class="bp-name">豪华钓艇</span>
+            <span class="bp-nums">拼船 <b>¥268</b>/人 · 包船 <b>¥2580</b></span>
+          </div>
         </div>
         <ul>
-          <li>约 4 小时，上午场 / 下午场任选【填入真实时长】</li>
+          <li>一价全包，没有任何二次消费</li>
           <li>近海钓点，鱼口稳，新手也能上鱼</li>
           <li>全套渔具 + 鱼饵不限量，什么都不用带</li>
           <li>船长 + 导钓双人服务，手把手教学</li>
@@ -502,20 +514,30 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
         </ul>
       </div>
       <div class="plan reveal">
-        <span class="plan-badge">包船 / 深度</span>
-        <h3>全天畅钓场</h3>
-        <div class="plan-price">
-          <span class="num">¥___</span><span class="unit">/ 船 · 可坐 __ 人</span>
-          <span class="todo">【填入真实价格】</span>
+        <span class="plan-badge">钓得过瘾</span>
+        <h3>六小时畅钓场</h3>
+        <p class="plan-time">上午 8:00 – 14:00 ｜ 下午 14:00 – 20:00</p>
+        <div class="boat-price">
+          <div class="bp-row">
+            <span class="bp-name">双体海钓大船</span>
+            <span class="bp-nums">拼船 <b>¥298</b>/人 · 包船 <b>¥2800</b></span>
+          </div>
+          <div class="bp-row">
+            <span class="bp-name">豪华钓艇</span>
+            <span class="bp-nums">拼船 <b>¥378</b>/人 · 包船 <b>¥3588</b></span>
+          </div>
         </div>
         <ul>
-          <li>约 8 小时，时间节奏你们说了算【填入真实时长】</li>
-          <li>远海多钓点轮着打，没鱼口主动换点</li>
+          <li>一价全包，没有任何二次消费</li>
+          <li>时间更充裕，多钓点轮着打，没鱼口主动换点</li>
           <li>目标大鱼，石斑、红友都有机会</li>
-          <li>含饮品渔获打包，可安排简单加工【填入实际包含项】</li>
-          <li>适合朋友聚会、团建、钓鱼发烧友</li>
+          <li>免费帮拍照录像，渔获打包带走</li>
+          <li>适合想好好过把瘾的朋友、钓鱼发烧友</li>
         </ul>
       </div>
+    </div>
+    <div class="crew-note reveal">
+      <b>每船配置：</b>资深船长 1 名 + 专业导钓 1 名，全程跟着服务。每船荷载 <b>10 名</b>钓友（超过 1 周岁的宝宝也算占位哦）。新手小白、男女老少都适合。包船时间可相对灵活 1 小时，但不跨两个班次。
     </div>
 
     <!-- 当天行程 -->
@@ -525,19 +547,19 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
       <div class="timeline-track">
         <div class="tl-item">
           <div class="tl-dot">1</div>
-          <span class="tl-time">【__ 点】码头集合</span>
+          <span class="tl-time">9:00 / 14:00 出发</span>
           <h4>码头碰头</h4>
-          <p>导航直达，免费停车。上船先穿救生衣，讲安全须知</p>
+          <p>星华旅游游艇码头集合。上船先穿救生衣，讲安全须知</p>
         </div>
         <div class="tl-item">
           <div class="tl-dot">2</div>
-          <span class="tl-time">【约 __ 分钟】</span>
+          <span class="tl-time">船程片刻</span>
           <h4>出海到钓点</h4>
           <p>一路吹海风看海景，晕船的提前贴好晕船贴（免费）</p>
         </div>
         <div class="tl-item">
           <div class="tl-dot">3</div>
-          <span class="tl-time">【约 __ 小时】</span>
+          <span class="tl-time">钓 4 / 6 小时</span>
           <h4>开钓 + 教学</h4>
           <p>剪饵、绑线、放线、刺鱼全程教。没口就换钓点，不耗着</p>
         </div>
@@ -606,7 +628,7 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
         <p>我这个人比较实在：海里哪儿有鱼、今天鱼口怎么样，我直接跟你说。钓不到我不会让你在原地干耗，换点接着打。客人玩得开不开心，看我船上那些照片就知道了。</p>
         <div class="why">
           <div class="why-item"><span class="n">1</span><div><b>船长会找钓点</b><span>声纳探鱼 + 多年经验，没鱼口主动换点，不空军</span></div></div>
-          <div class="why-item"><span class="n">2</span><div><b>新手手把手教</b><span>剪饵、绑线、放线、刺鱼，教到你独立上鱼为止</span></div></div>
+          <div class="why-item"><span class="n">2</span><div><b>新手手把手教</b><span>剪饵、绑线、放线、刺鱼，全程手把手带着你操作</span></div></div>
           <div class="why-item"><span class="n">3</span><div><b>消费全透明</b><span>一口价写清楚，无隐形消费，渔获全部带走</span></div></div>
           <div class="why-item"><span class="n">4</span><div><b>免费帮拍照</b><span>海上光线好容易出片，工作人员主动帮你拍</span></div></div>
           <div class="why-item"><span class="n">5</span><div><b>安全放第一</b><span>船开得稳，保险救生衣急救箱配齐，照顾到每位客人</span></div></div>
@@ -682,8 +704,8 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
           </span>
           <div>
             <b>集合码头</b>
-            <p class="big" style="font-size:17px;">【填入码头名称 / 定位】</p>
-            <p>三亚市区出发约 __ 分钟，码头免费停车</p>
+            <p class="big" style="font-size:17px;">三亚星华旅游游艇码头</p>
+            <p>导航直接搜码头名，到了打我电话，我去接你上船</p>
           </div>
         </div>
         <div class="contact-item">
@@ -692,8 +714,8 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
           </span>
           <div>
             <b>出海班次</b>
-            <p class="big" style="font-size:17px;">上午场 __:__ / 下午场 __:__</p>
-            <p>旺季位置紧，建议提前 __ 天约【填入实际班次】</p>
+            <p class="big" style="font-size:15.5px;">4 小时场：9:00 / 14:00 出发<br>6 小时场：8:00 / 14:00 出发</p>
+            <p>每船只坐 10 人，旺季位置紧，建议提前约</p>
           </div>
         </div>
         <div class="qr-box">
@@ -734,9 +756,10 @@ footer{background:#072B46;color:rgba(255,255,255,.6);padding:44px 0 34px;font-si
         <div class="field">
           <label>想玩哪种</label>
           <select id="fType">
-            <option>半天体验场（拼船）</option>
-            <option>全天畅钓场（包船）</option>
-            <option>亲子体验</option>
+            <option>四小时体验场（拼船）</option>
+            <option>四小时体验场（包船）</option>
+            <option>六小时畅钓场（拼船）</option>
+            <option>六小时畅钓场（包船）</option>
             <option>还没想好，给点建议</option>
           </select>
         </div>
